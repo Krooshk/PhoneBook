@@ -11,7 +11,6 @@ export interface Iuser {
 	lastName: string;
 	phone: number;
 	email: string;
-	website: string;
 	organization: string;
 	address: string;
 	relative: Relative;

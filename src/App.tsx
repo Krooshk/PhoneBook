@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Input, Select, Space, Layout, Modal } from 'antd'
+import { Button, Input, Select, Space, Layout, Modal, Form } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 import { User } from './components/user.jsx'
 import { FormTop } from './components/formTop.jsx'
@@ -21,10 +21,12 @@ const headerStyle: React.CSSProperties = {
 	paddingInline: 50,
 	lineHeight: '64px',
 	backgroundColor: '#7dbcea',
-	width: '700px'
+	width: '700px',
 };
 
 const contentStyle: React.CSSProperties = {
+	paddingTop: '15px',
+	paddingBottom: '15px',
 	textAlign: 'center',
 	minHeight: 120,
 	lineHeight: '120px',
@@ -49,9 +51,6 @@ function App() {
 		setIsModalOpen(true);
 	};
 
-	const handleOk = () => {
-		setIsModalOpen(false);
-	};
 
 	const handleCancel = () => {
 		setIsModalOpen(false);
@@ -79,6 +78,7 @@ function App() {
 		},
 	];
 
+
 	return (
 		<>
 			<Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
@@ -96,7 +96,10 @@ function App() {
 						<Button type="primary" onClick={showModal}
 							icon={<PlusOutlined />}
 						/>
-						<Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+						<Modal
+							open={isModalOpen}
+							onCancel={handleCancel}
+							footer={null}>
 							<FormTop add={add} />
 						</Modal>
 

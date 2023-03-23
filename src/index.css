@@ -74,7 +74,19 @@ button:focus-visible {
 }
 
 .formTop {
-	position: absolute;
-	top: 25%;
-	background-color: #1a1a1a6a;
+	padding-top: 30px;
 }
+
+
+.user {
+border: 1px solid rgba(43, 13, 85, 0.382);
+border-radius: 20px;
+width: 500px;
+background: linear-gradient(90deg, rgba(2, 0, 36, 0.308) 0%, rgba(6, 6, 158, 0.21) 45%, rgba(0, 213, 255, 0.407) 100%);
+}
+.user div{
+height: 50px;
+}
+
+.user div span{
+font-size: 20px;}
