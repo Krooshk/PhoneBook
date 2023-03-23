@@ -7,11 +7,11 @@ export enum Relative {
 
 
 export interface Iuser {
-	firstName: string;
-	lastName: string;
-	phone: number;
-	email: string;
-	organization: string;
-	address: string;
-	relative: Relative;
+	'firstName': string;
+	'lastName': string;
+	'phone': number;
+	'email': string;
+	'organization': string;
+	'address': string;
+	'relative': Relative;
 }

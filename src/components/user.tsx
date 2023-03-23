@@ -9,9 +9,11 @@ export function User({ item }: { item: Iuser }): JSX.Element {
 				<span>{item.lastName} </span>
 				<span>{item.phone} </span>
 			</div>
+			<div>
 			<span>{item.email} </span>
 			<span>{item.organization} </span>
 			<span>{item.address} </span>
+			</div>
 		</div>
 
 	)
