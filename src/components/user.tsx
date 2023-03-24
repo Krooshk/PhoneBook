@@ -1,21 +1,18 @@
 import { Iuser } from '../interface/IUser.jsx'
-
+import { Descriptions, Button, Layout, Space } from 'antd'
 export function User({ item }: { item: Iuser }): JSX.Element {
-	return (
-		<div className='user'>
-			<div>
-				<span>{item.relative} </span>
-				<span>{item.firstName} </span>
-				<span>{item.lastName} </span>
-				<span>{item.phone} </span>
-			</div>
-			<div>
-			<span>{item.email} </span>
-			<span>{item.organization} </span>
-			<span>{item.address} </span>
-			</div>
-		</div>
 
+
+	return (
+		<Space className='user'>
+			<Descriptions >
+				<Descriptions.Item label="firstName">{item.firstName}</Descriptions.Item>
+				<Descriptions.Item label="lastName">{item.lastName}</Descriptions.Item>
+				<Descriptions.Item label="phone">{item.phone}</Descriptions.Item>
+				<Descriptions.Item label="email">{item.email}</Descriptions.Item>
+				<Descriptions.Item label="organization">{item.organization}</Descriptions.Item>
+				<Descriptions.Item label="relative">{item.relative}</Descriptions.Item>
+			</Descriptions>
+		</Space>
 	)
 }
-

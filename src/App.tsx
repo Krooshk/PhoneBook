@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Input, Select, Space, Layout, Modal, Pagination } from 'antd'
+import type { PaginationProps } from 'antd';
 import { PlusOutlined } from '@ant-design/icons'
 import { User } from './components/user.jsx'
 import { FormTop } from './components/formTop.jsx'
@@ -28,6 +29,7 @@ const contentStyle: React.CSSProperties = {
 	paddingTop: '15px',
 	paddingBottom: '15px',
 	textAlign: 'center',
+	height:'550px',
 	minHeight: 120,
 	lineHeight: '120px',
 	color: '#fff',
@@ -38,14 +40,24 @@ const contentStyle: React.CSSProperties = {
 
 function App() {
 
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [users, setUsers] = useState(data);
 	const [filterUsers, setfilterUsers] = useState(users);
-	const [filter, setFilter] = useState({ value: 'all', label: 'all' });
+	const [filterWord, setFilterWord] = useState({ value: 'all', label: 'all' });
 	const [input, setInput] = useState('');
+	const [contactsPerPage]=useState(5);
+	const [current, setCurrent] = useState(1);
+	
+
+	const lastIndex=current*contactsPerPage;
+	const firstIndex=lastIndex-contactsPerPage;
+
+
 
 	function add(user: Iuser) {
-		setUsers([...users, user])
+		setUsers([...users, user]);
+		setfilterUsers([...users, user]);
 	}
 
 
@@ -60,7 +72,7 @@ function App() {
 	};
 
 	const handleChange = (value: { value: string; label: string }) => {
-		setFilter(value);
+		setFilterWord(value);
 	};
 
 	const { Search } = Input;
@@ -104,14 +116,22 @@ function App() {
 		setInput(event.target.value)
 	}
 
+	const changePage: PaginationProps['onChange'] = (page) => {
+		setCurrent(page);
+	  };
+
+	
+
 
 	function handlesearch() {
-		const filterWord=filter.value;
 		if (filterWord === 'all') {
 			setfilterUsers(users)
 		}
 		else {
-			setfilterUsers(users.filter(item=>{return item['relative'].includes(input)}));
+			setfilterUsers(users.filter(item=>{
+				console.log(filterWord);
+				return item[filterWord].includes(input);
+			}));
 		}
 	}
 
@@ -144,13 +164,13 @@ function App() {
 					<Content
 						style={contentStyle}>
 						<Space direction="vertical" size="middle">
-							{filterUsers.map((item, index) => {
+							{filterUsers.slice(firstIndex,lastIndex).map((item, index) => {
 								return <User key={index} item={item} />
 							}
 							)}
 						</Space>
-						{/* <Pagination simple defaultCurrent={2} total={50} /> */}
 					</Content>
+					<Pagination simple defaultCurrent={current} total={filterUsers.length} defaultPageSize={contactsPerPage} onChange={changePage}/>
 				</Layout>
 			</Space>
 

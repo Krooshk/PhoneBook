@@ -9,9 +9,8 @@ export enum Relative {
 export interface Iuser {
 	'firstName': string;
 	'lastName': string;
-	'phone': number;
+	'phone': string;
 	'email': string;
 	'organization': string;
-	'address': string;
 	'relative': Relative;
 }

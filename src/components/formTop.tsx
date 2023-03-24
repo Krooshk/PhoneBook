@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Input, InputNumber } from 'antd';
+import { Button, Form, Input,Select} from 'antd';
 import { data } from '../data.jsx';
 import { Iuser } from '../interface/IUser.js';
 
@@ -55,11 +55,17 @@ export function FormTop(props: {
 			<Form.Item name={['user', 'organization']} label="organization">
 				<Input />
 			</Form.Item>
-			<Form.Item name={['user', 'address']} label="address">
-				<Input />
-			</Form.Item>
 			<Form.Item name={['user', 'relative']} label="relative">
-				<Input />
+			<Select
+      defaultValue="коллега"
+      style={{ width: 250 }}
+      options={[
+        { value: 'коллега', label: 'коллега' },
+        { value: 'друг', label: 'друг' },
+        { value: 'одноклассник', label: 'одноклассник' },
+        { value: 'родственник', label: 'родственник' },
+      ]}
+    />
 			</Form.Item>
 			<Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
 				<Button type="primary" htmlType="submit">
