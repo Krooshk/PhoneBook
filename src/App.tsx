@@ -45,7 +45,7 @@ function App() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [users, setUsers] = useState(data);
 	const [filterUsers, setfilterUsers] = useState(users);
-	const [filterWord, setFilterWord] = useState({ value: 'all', label: 'all' });
+	const [filterWord, setFilterWord] = useState({ value: 'firstName', label: 'firstName' });
 	const [input, setInput] = useState('');
 	const [contactsPerPage] = useState(5);
 	const [current, setCurrent] = useState(1);
@@ -128,7 +128,7 @@ function App() {
 		console.log(obj);
 		let copy = Object.assign([], users);
 		console.log(copy);
-		let index = users.findIndex(item => item.id == id);
+		let index:number = users.findIndex(item => item.id == id);
 		console.log(index);
 		copy[index] ={ ...data[index],...obj};
 		console.log(copy);
@@ -139,13 +139,13 @@ function App() {
 
 
 	function handlesearch() {
-		if (filterWord === '') {
+		if (filterWord.value === '') {
 			setfilterUsers(users)
 		}
 		else {
 			setfilterUsers(users.filter(item => {
 				console.log(filterWord);
-				return item[filterWord].includes(input);
+				return item[filterWord.value as keyof Iuser].includes(input);
 			}));
 		}
 	}

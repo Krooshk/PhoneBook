@@ -2,10 +2,12 @@ import { Iuser } from '../interface/IUser.jsx'
 import { useState } from 'react';
 import { Descriptions, Button, Layout, Space, Avatar, Card, Input } from 'antd'
 import { EditOutlined, CloseOutlined } from '@ant-design/icons';
+
+
 export function User(props: {
 	item: Iuser,
 	handleDelete: (id: string) => void,
-	changeData: ({ }) => void
+	changeData: ({ },id:string) => void
 }): JSX.Element {
 
 	const [edit, setEdit] = useState(false);
