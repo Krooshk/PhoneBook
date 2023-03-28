@@ -126,7 +126,7 @@ function App() {
 	function changeData(obj: {}, id: string) {
 		// console.log(users.findIndex(item => item.id == id));
 		console.log(obj);
-		let copy = Object.assign([], users);
+		let copy:Iuser[] = Object.assign([], users);
 		console.log(copy);
 		let index:number = users.findIndex(item => item.id == id);
 		console.log(index);
@@ -145,7 +145,8 @@ function App() {
 		else {
 			setfilterUsers(users.filter(item => {
 				console.log(filterWord);
-				return item[filterWord.value as keyof Iuser].includes(input);
+				// return item[filterWord.value as keyof Iuser].includes(input);
+				return item[filterWord].includes(input);
 			}));
 		}
 	}
