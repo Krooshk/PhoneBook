@@ -45,7 +45,7 @@ function App() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [users, setUsers] = useState(data);
 	const [filterUsers, setfilterUsers] = useState(users);
-	const [filterWord, setFilterWord] = useState({ value: 'firstName', label: 'firstName' });
+	const [filterWord, setFilterWord] = useState('firstName');
 	const [input, setInput] = useState('');
 	const [contactsPerPage] = useState(5);
 	const [current, setCurrent] = useState(1);
@@ -139,7 +139,7 @@ function App() {
 
 
 	function handlesearch() {
-		if (filterWord.value === '') {
+		if (filterWord === '') {
 			setfilterUsers(users)
 		}
 		else {
