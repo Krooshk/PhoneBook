@@ -1,6 +1,7 @@
 
 import { Iuser } from './interface/IUser.jsx'
 import { Relative } from './interface/IUser.jsx'
+import { nanoid } from 'nanoid'
 
 export const data: Iuser[] = [
 	{
@@ -10,6 +11,7 @@ export const data: Iuser[] = [
 		email: 'van@mail.ru',
 		organization: 'Aviasales',
 		relative: Relative.colleague,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Петя',
@@ -18,6 +20,7 @@ export const data: Iuser[] = [
 		email: 'petya@mail.ru',
 		organization: 'Ural',
 		relative: Relative.colleague,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Максим',
@@ -26,6 +29,7 @@ export const data: Iuser[] = [
 		email: 'sid@gmail.com',
 		organization: 'Storm',
 		relative: Relative.friend,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Лена',
@@ -34,6 +38,7 @@ export const data: Iuser[] = [
 		email: 'elen@mail.ru',
 		organization: 'Sky',
 		relative: Relative.classmate,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Егор',
@@ -42,6 +47,7 @@ export const data: Iuser[] = [
 		email: 'georg@mail.ru',
 		organization: 'Forest',
 		relative: Relative.relative,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Никита',
@@ -50,6 +56,7 @@ export const data: Iuser[] = [
 		email: 'ankv@gmail.com',
 		organization: 'Rodster',
 		relative: Relative.colleague,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Маша',
@@ -58,6 +65,7 @@ export const data: Iuser[] = [
 		email: 'mary@mail.ru',
 		organization: 'HighLevel',
 		relative: Relative.classmate,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Петя',
@@ -66,6 +74,7 @@ export const data: Iuser[] = [
 		email: 'jil@mail.ru',
 		organization: 'Kamaz',
 		relative: Relative.friend,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Максим',
@@ -74,6 +83,7 @@ export const data: Iuser[] = [
 		email: 'volk@gmail.com',
 		organization: 'MosMetro',
 		relative: Relative.classmate,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Евгений',
@@ -82,6 +92,7 @@ export const data: Iuser[] = [
 		email: 'van@mail.ru',
 		organization: 'Aviasales',
 		relative: Relative.friend,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Петя',
@@ -90,6 +101,7 @@ export const data: Iuser[] = [
 		email: 'petya@mail.ru',
 		organization: 'Sibir',
 		relative: Relative.relative,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Максим',
@@ -98,6 +110,7 @@ export const data: Iuser[] = [
 		email: 'sid@gmail.com',
 		organization: 'Media',
 		relative: Relative.classmate,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Иван',
@@ -106,6 +119,7 @@ export const data: Iuser[] = [
 		email: 'van@mail.ru',
 		organization: 'Sel',
 		relative: Relative.friend,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Петя',
@@ -114,6 +128,7 @@ export const data: Iuser[] = [
 		email: 'petya@mail.ru',
 		organization: 'Ural',
 		relative: Relative.colleague,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Максим',
@@ -122,6 +137,7 @@ export const data: Iuser[] = [
 		email: 'sid@gmail.com',
 		organization: 'Storm',
 		relative: Relative.friend,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Петя',
@@ -130,6 +146,7 @@ export const data: Iuser[] = [
 		email: 'petya@mail.ru',
 		organization: 'Ural',
 		relative: Relative.colleague,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Максим',
@@ -138,6 +155,7 @@ export const data: Iuser[] = [
 		email: 'sid@gmail.com',
 		organization: 'Storm',
 		relative: Relative.friend,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Иван',
@@ -146,6 +164,7 @@ export const data: Iuser[] = [
 		email: 'van@mail.ru',
 		organization: 'Aviasales',
 		relative: Relative.colleague,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Александр',
@@ -154,6 +173,7 @@ export const data: Iuser[] = [
 		email: 'petya@mail.ru',
 		organization: 'Ural',
 		relative: Relative.colleague,
+		id:nanoid(),
 	},
 	{
 		firstName: 'Александр',
@@ -162,5 +182,6 @@ export const data: Iuser[] = [
 		email: 'sid@gmail.com',
 		organization: 'Storm',
 		relative: Relative.friend,
+		id:nanoid(),
 	},
 ];

@@ -6,6 +6,7 @@ import { User } from './components/user.jsx'
 import { FormTop } from './components/formTop.jsx'
 import './App.css'
 
+import { nanoid } from 'nanoid';
 import { data } from './data.jsx';
 import { Iuser } from './interface/IUser.js';
 
@@ -29,7 +30,7 @@ const contentStyle: React.CSSProperties = {
 	paddingTop: '15px',
 	paddingBottom: '15px',
 	textAlign: 'center',
-	height:'550px',
+	height: '1050px',
 	minHeight: 120,
 	lineHeight: '120px',
 	color: '#fff',
@@ -46,18 +47,18 @@ function App() {
 	const [filterUsers, setfilterUsers] = useState(users);
 	const [filterWord, setFilterWord] = useState({ value: 'all', label: 'all' });
 	const [input, setInput] = useState('');
-	const [contactsPerPage]=useState(5);
+	const [contactsPerPage] = useState(5);
 	const [current, setCurrent] = useState(1);
-	
 
-	const lastIndex=current*contactsPerPage;
-	const firstIndex=lastIndex-contactsPerPage;
+
+	const lastIndex = current * contactsPerPage;
+	const firstIndex = lastIndex - contactsPerPage;
 
 
 
 	function add(user: Iuser) {
-		setUsers([...users, user]);
-		setfilterUsers([...users, user]);
+		setUsers([...users, { ...user, id: nanoid() }]);
+		setfilterUsers([...users, { ...user, id: nanoid() }]);
 	}
 
 
@@ -83,14 +84,10 @@ function App() {
 			style={{ width: 120 }}
 			onChange={handleChange}
 			defaultValue={{
-				value: 'all',
-				label: 'all',
+				value: 'firstName',
+				label: 'firstName',
 			}}
 			options={[
-				{
-					value: 'all',
-					label: 'all',
-				},
 				{
 					value: 'firstName',
 					label: 'firstName',
@@ -118,17 +115,35 @@ function App() {
 
 	const changePage: PaginationProps['onChange'] = (page) => {
 		setCurrent(page);
-	  };
+	};
 
-	
+
+	function handleDelete(id_out: string) {
+		setUsers(users.filter(item => item.id !== id_out));
+		setfilterUsers(filterUsers.filter(item => item.id !== id_out));
+	}
+
+	function changeData(obj: {}, id: string) {
+		// console.log(users.findIndex(item => item.id == id));
+		console.log(obj);
+		let copy = Object.assign([], users);
+		console.log(copy);
+		let index = users.findIndex(item => item.id == id);
+		console.log(index);
+		copy[index] ={ ...data[index],...obj};
+		console.log(copy);
+		setUsers(copy);
+		setfilterUsers(copy);
+		// handlesearch
+	}
 
 
 	function handlesearch() {
-		if (filterWord === 'all') {
+		if (filterWord === '') {
 			setfilterUsers(users)
 		}
 		else {
-			setfilterUsers(users.filter(item=>{
+			setfilterUsers(users.filter(item => {
 				console.log(filterWord);
 				return item[filterWord].includes(input);
 			}));
@@ -164,13 +179,13 @@ function App() {
 					<Content
 						style={contentStyle}>
 						<Space direction="vertical" size="middle">
-							{filterUsers.slice(firstIndex,lastIndex).map((item, index) => {
-								return <User key={index} item={item} />
+							{filterUsers.slice(firstIndex, lastIndex).map((item, index) => {
+								return <User key={index} item={item} changeData={changeData} handleDelete={handleDelete} />
 							}
 							)}
 						</Space>
 					</Content>
-					<Pagination simple defaultCurrent={current} total={filterUsers.length} defaultPageSize={contactsPerPage} onChange={changePage}/>
+					<Pagination simple defaultCurrent={current} total={filterUsers.length} defaultPageSize={contactsPerPage} onChange={changePage} />
 				</Layout>
 			</Space>
 
