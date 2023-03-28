@@ -72,7 +72,7 @@ function App() {
 		setIsModalOpen(false);
 	};
 
-	const handleChange = (value: { value: string; label: string }) => {
+	const handleChange = (value:any) => {
 		setFilterWord(value);
 	};
 
@@ -82,30 +82,18 @@ function App() {
 	const selectBefore = (
 		<Select
 			style={{ width: 120 }}
-			onChange={handleChange}
+			onChange={(value) => {
+				handleChange(value)}
+			}
 			defaultValue={{
 				value: 'firstName',
 				label: 'firstName',
 			}}
-			options={[
-				{
-					value: 'firstName',
-					label: 'firstName',
-				},
-				{
-					value: 'lastName',
-					label: 'lastName',
-				},
-				{
-					value: 'organization',
-					label: 'organization',
-				},
-				{
-					value: 'relative',
-					label: 'relative',
-				},
-			]}
 		>
+			<Option value="firstName">firstName</Option>
+			<Option value="lastName">lastName</Option>
+			<Option value="organization">organization</Option>
+			<Option value="relative">relative</Option>
 		</Select>
 	);
 
@@ -126,11 +114,11 @@ function App() {
 	function changeData(obj: {}, id: string) {
 		// console.log(users.findIndex(item => item.id == id));
 		console.log(obj);
-		let copy:Iuser[] = Object.assign([], users);
+		let copy: Iuser[] = Object.assign([], users);
 		console.log(copy);
-		let index:number = users.findIndex(item => item.id == id);
+		let index: number = users.findIndex(item => item.id == id);
 		console.log(index);
-		copy[index] ={ ...data[index],...obj};
+		copy[index] = { ...data[index], ...obj };
 		console.log(copy);
 		setUsers(copy);
 		setfilterUsers(copy);

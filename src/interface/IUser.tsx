@@ -7,6 +7,7 @@ export enum Relative {
 
 
 export interface Iuser {
+	[key: string]: any;
 	'firstName': string;
 	'lastName': string;
 	'phone': string;

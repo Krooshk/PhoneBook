@@ -29,11 +29,11 @@ export function User(props: {
 	}
 
 	function handleChangeInput(e: React.ChangeEvent<HTMLInputElement>) {
-		const key = e.target.parentElement!.previousElementSibling!.textContent;
+		const key = e.target!.parentElement!.previousElementSibling!.textContent;
 		const value = e.target.value;
 
 		if (key !== null) {
-			const obj = { ...data };
+			const obj:{[key: string]: any} = { ...data };
 			obj[key] = value;
 			setData({ ...obj })
 		}
