@@ -1,41 +1,19 @@
 import { useEffect, useState } from 'react';
-import { Button, Input, Select, Space, Layout, Modal, Pagination } from 'antd'
+import { Button, Input, Select, Space, Layout, Modal, Pagination, Form } from 'antd'
 import type { PaginationProps } from 'antd';
 import { PlusOutlined } from '@ant-design/icons'
 import { User } from './components/user.jsx'
 import { FormTop } from './components/formTop.jsx'
-import './App.css'
 
 import { nanoid } from 'nanoid';
 import { data } from './data.jsx';
 import { Iuser } from './interface/IUser.js';
 
+import { headerStyle, contentStyle } from './styles/app'
+
 const { Header, Content } = Layout;
 
 
-const headerStyle: React.CSSProperties = {
-	display: 'flex',
-	justifyContent: 'space-around',
-	alignItems: 'center',
-	textAlign: 'center',
-	color: '#fff',
-	height: 64,
-	paddingInline: 50,
-	lineHeight: '64px',
-	backgroundColor: '#7dbcea',
-	width: '700px',
-};
-
-const contentStyle: React.CSSProperties = {
-	paddingTop: '15px',
-	paddingBottom: '15px',
-	textAlign: 'center',
-	height: '1050px',
-	minHeight: 120,
-	lineHeight: '120px',
-	color: '#fff',
-	backgroundColor: '#108ee9',
-};
 
 
 
@@ -61,29 +39,26 @@ function App() {
 		setfilterUsers([...users, { ...user, id: nanoid() }]);
 	}
 
-
-
 	const showModal = () => {
 		setIsModalOpen(true);
 	};
-
 
 	const handleCancel = () => {
 		setIsModalOpen(false);
 	};
 
-	const handleChange = (value:any) => {
+	const handleChange = (value: any) => {
 		setFilterWord(value);
 	};
 
-	const { Search } = Input;
 	const { Option } = Select;
 
 	const selectBefore = (
 		<Select
-			style={{ width: 120 }}
+			style={{ maxWidth: 120 }}
 			onChange={(value) => {
-				handleChange(value)}
+				handleChange(value)
+			}
 			}
 			defaultValue={{
 				value: 'firstName',
@@ -105,26 +80,18 @@ function App() {
 		setCurrent(page);
 	};
 
-
 	function handleDelete(id_out: string) {
 		setUsers(users.filter(item => item.id !== id_out));
 		setfilterUsers(filterUsers.filter(item => item.id !== id_out));
 	}
 
 	function changeData(obj: {}, id: string) {
-		// console.log(users.findIndex(item => item.id == id));
-		console.log(obj);
 		let copy: Iuser[] = Object.assign([], users);
-		console.log(copy);
 		let index: number = users.findIndex(item => item.id == id);
-		console.log(index);
 		copy[index] = { ...data[index], ...obj };
-		console.log(copy);
 		setUsers(copy);
 		setfilterUsers(copy);
-		// handlesearch
 	}
-
 
 	function handlesearch() {
 		if (filterWord === '') {
@@ -132,8 +99,6 @@ function App() {
 		}
 		else {
 			setfilterUsers(users.filter(item => {
-				console.log(filterWord);
-				// return item[filterWord.value as keyof Iuser].includes(input);
 				return item[filterWord].includes(input);
 			}));
 		}
@@ -146,12 +111,14 @@ function App() {
 				<Layout>
 					<Header style={headerStyle}>
 						<Space direction="vertical" size="middle">
-							<Space.Compact style={{ width: '100%' }}>
-								<Input addonBefore={selectBefore} placeholder="Start search" value={input} onChange={handleChangeInput} />
-								<Button onClick={handlesearch} type="primary">
-									Search
-								</Button>
-							</Space.Compact>
+							<Form >
+								<Space.Compact>
+									<Input addonBefore={selectBefore} onPressEnter={handlesearch} placeholder="Start search" value={input} onChange={handleChangeInput} />
+									<Button onClick={handlesearch} type="primary">
+										Search
+									</Button>
+								</Space.Compact>
+							</Form>
 						</Space>
 
 						<Button type="primary" onClick={showModal}

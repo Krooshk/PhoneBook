@@ -46,18 +46,18 @@ export function FormTop(props: {
 			<Form.Item name={['user', 'lastName']} label="lastName" rules={[{ required: true }]}>
 				<Input />
 			</Form.Item>
-			<Form.Item name={['user', 'phone']} label="phone" rules={[{ required: true }]}>
+			<Form.Item name={['user', 'phone']} label="phone" rules={[{required: true,message: "A value must be entered", pattern: new RegExp(/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/)}]}>
 				<Input />
 			</Form.Item>
 			<Form.Item name={['user', 'email']} label="Email" rules={[{ type: 'email' }]}>
 				<Input />
 			</Form.Item>
-			<Form.Item name={['user', 'organization']} label="organization">
+			<Form.Item name={['user', 'organization']} label="organization" rules={[{ required: true }]}>
 				<Input />
 			</Form.Item>
-			<Form.Item name={['user', 'relative']} label="relative">
+			<Form.Item name={['user', 'relative']} label="relative" rules={[{ required: true }]}>
 			<Select
-      defaultValue="коллега"
+     value="коллега"
       style={{ width: 250 }}
       options={[
         { value: 'коллега', label: 'коллега' },
